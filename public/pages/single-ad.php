@@ -46,7 +46,7 @@ loadPartials('navbar');
 
                 <h4 class="text-2xl font-medium mt-6 mb-3"><?= $ad->title; ?></h4>
                 <span class="text-slate-400 flex items-center"><i data-feather="map-pin" class="size-5 me-2"></i><?= $ad->address;?></span>
-
+            
                 <ul class="py-6 flex items-center list-none">
                     <li class="flex items-center lg:me-6 me-4">
                         <i class="uil uil-compress-arrows lg:text-3xl text-2xl me-2 text-green-600"></i>

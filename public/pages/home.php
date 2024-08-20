@@ -10,7 +10,7 @@ loadPartials("navbar");
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
                 <?php
                 /**
-                 * @var  $ads
+                 * @var  $ad
                  */
                 foreach ($ads as $ad): ?>
                     <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
@@ -27,7 +27,7 @@ loadPartials("navbar");
                         <div class="p-6">
                             <div class="pb-6">
                                 <a href="/ads/<?php echo $ad->id?>"
-                                    class="text-lg hover:text-green-600 font-medium ease-in-out duration-500"><?= $ad->title ?></a>
+                                    class="text-lg hover:text-green-600 font-medium ease-in-out duration-500"><?= $ad->title?></a>
                             </div>
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
@@ -54,7 +54,7 @@ loadPartials("navbar");
                                 </li>
                             </ul>
                         </div>
-                    </div><!--end property content-->
+                    </div>
 
                 <?php endforeach; ?>
 
