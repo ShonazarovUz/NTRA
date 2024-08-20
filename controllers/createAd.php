@@ -10,6 +10,9 @@ $branch      = (int) $_POST['branch'];
 $address     = $_POST['address'];
 $rooms       = (int) $_POST['rooms'];
 
+dd($_FILES);
+
+
 $newAd = (new \App\Ads())->createAds(
     $title,
     $description,
