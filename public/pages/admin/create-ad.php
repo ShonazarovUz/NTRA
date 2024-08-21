@@ -206,7 +206,7 @@ loadPartials('navbar');
                                 <div class="grid grid-cols-12 gap-5">
                                     <div class="col-span-12">
                                         <label for="title" class="font-medium">Sarlavha</label>
-                                        <input name="title" id="title" type="text" class="form-input mt-2" placeholder="Ads Title :">
+                                        <input name="title" id="title" type="text" class="form-input mt-2" placeholder="Sarlavha kiriting:">
                                     </div>
 
                                     <div class="md:col-span-4 col-span-12">

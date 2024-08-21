@@ -24,4 +24,7 @@ $newAd = (new \App\Ads())->createAds(
     $rooms
 );
 
-dd($newAd);
+if($newAd){    
+
+    header("location: / ");
+}
