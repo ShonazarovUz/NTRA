@@ -18,35 +18,35 @@ loadPartials('navbar');
                 <div class="grid grid-cols-1 relative">
                     <div class="tiny-one-item">
                         <div class="tiny-slide">
-                            <img src="assets/images/property/single/1.jpg"
-                                class="rounded-md shadow dark:shadow-gray-700" alt="">
+                            <img src="<?=$ad->image?>"
+                                 class="rounded-md shadow dark:shadow-gray-700" alt="">
                         </div>
 
                         <div class="tiny-slide">
                             <img src="assets/images/property/single/2.jpg"
-                                class="rounded-md shadow dark:shadow-gray-700" alt="">
+                                 class="rounded-md shadow dark:shadow-gray-700" alt="">
                         </div>
 
                         <div class="tiny-slide">
                             <img src="assets/images/property/single/3.jpg"
-                                class="rounded-md shadow dark:shadow-gray-700" alt="">
+                                 class="rounded-md shadow dark:shadow-gray-700" alt="">
                         </div>
 
                         <div class="tiny-slide">
                             <img src="assets/images/property/single/4.jpg"
-                                class="rounded-md shadow dark:shadow-gray-700" alt="">
+                                 class="rounded-md shadow dark:shadow-gray-700" alt="">
                         </div>
 
                         <div class="tiny-slide">
                             <img src="assets/images/property/single/5.jpg"
-                                class="rounded-md shadow dark:shadow-gray-700" alt="">
+                                 class="rounded-md shadow dark:shadow-gray-700" alt="">
                         </div>
                     </div>
                 </div>
 
                 <h4 class="text-2xl font-medium mt-6 mb-3"><?= $ad->title; ?></h4>
                 <span class="text-slate-400 flex items-center"><i data-feather="map-pin" class="size-5 me-2"></i><?= $ad->address;?></span>
-            
+
                 <ul class="py-6 flex items-center list-none">
                     <li class="flex items-center lg:me-6 me-4">
                         <i class="uil uil-compress-arrows lg:text-3xl text-2xl me-2 text-green-600"></i>
@@ -120,7 +120,7 @@ loadPartials('navbar');
 
                         <div class="mt-6">
                             <a href="contact.html"
-                                class="btn bg-transparent hover:bg-green-600 border border-green-600 text-green-600 hover:text-white rounded-md"><i
+                               class="btn bg-transparent hover:bg-green-600 border border-green-600 text-green-600 hover:text-white rounded-md"><i
                                         class="uil uil-phone align-middle me-2"></i> Contact us</a>
                         </div>
                     </div>
