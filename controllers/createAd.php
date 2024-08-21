@@ -25,7 +25,7 @@ if ($_POST['title']
     $newAdsId = (new \App\Ads())->createAds(
         $title,
         $description,
-        5,
+        1,
         1,
         1,
         $address,

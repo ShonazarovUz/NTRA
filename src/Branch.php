@@ -12,20 +12,19 @@ use AllowDynamicProperties;
         $this -> pdo = DB::connect();
     }
 
-    public function createBranch($id, $name, $address)
+    public function createBranch($name, $address)
     {
-        $sql = 'INSERT INTO branch(id, name, address, created_at) VALUES (:id, :name, :address, NOW())';
+        $sql = 'INSERT INTO branch(name, address, created_at) VALUES (:name, :address, NOW())';
         $stmt = $this -> pdo -> prepare($sql);
-        $stmt -> bindParam(':id', $id);
         $stmt -> bindParam(':name', $name);
         $stmt -> bindParam(':address', $address);
-        $stmt -> execute();
+        return $stmt -> execute();
+        
     }
-    public function updateBranch($id, $name, $address)
+    public function updateBranch($name, $address)
     {
         $sql = 'UPDATE branch SET name = :name, address = :address, updated_at = NOW() WHERE id = :id';
         $stmt = $this -> pdo -> prepare($sql);
-        $stmt -> bindParam(':id', $id);
         $stmt -> bindParam(':name', $name);
         $stmt -> bindParam(':address', $address);
         $stmt -> execute();
@@ -37,5 +36,9 @@ use AllowDynamicProperties;
         $stmt = $this -> pdo -> prepare($sql);
         $stmt -> bindParam(':id', $id);
         $stmt -> execute();
+    }
+    public function getBranches(){
+        $query ="SELECT * FROM branch";
+        return $this->pdo->query($query)->fetchAll();
     }
 }

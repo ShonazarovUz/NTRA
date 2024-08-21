@@ -10,13 +10,13 @@ use PDO;
     {
         $this -> pdo = DB::connect();
     }
-    public function createStatus($id, $name)
+    public function createStatus($name)
     {
-        $sql = "INSERT INTO status (id , name) VALUES (:id, :name)";
+        $sql = "INSERT INTO status (name) VALUES (:name)";
         $stmt = $this -> pdo -> prepare($sql);
-        $stmt -> bindParam(':id', $id);
         $stmt -> bindParam(':name', $name);
-        $stmt -> execute();
+        return $stmt -> execute();
+        // return $this->pdo->lastInsertId();
     }
 
     public function updateStatus($id, $name)
