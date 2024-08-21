@@ -81,7 +81,7 @@ loadPartials('navbar');
                             <div class="flex justify-between items-center mt-4">
                                 <span class="text-xl font-medium">$ <?= $ad->price;?></span>
 
-                                <span class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6"><?= $ad->status_id;?></span>
+                                <span class="bg-green-600/10 text-green-600 text-sm px-2.5 py-0.75 rounded h-6"><?= $ad->status_name?></span>
                             </div>
 
                             <ul class="list-none mt-4">
@@ -120,7 +120,7 @@ loadPartials('navbar');
 
                         <div class="mt-6">
                             <a href="contact.html"
-                               class="btn bg-transparent hover:bg-green-600 border border-green-600 text-green-600 hover:text-white rounded-md"><i
+                            class="btn bg-transparent hover:bg-green-600 border border-green-600 text-green-600 hover:text-white rounded-md"><i
                                         class="uil uil-phone align-middle me-2"></i> Contact us</a>
                         </div>
                     </div>

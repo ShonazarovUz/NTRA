@@ -238,6 +238,17 @@ loadPartials('navbar');
                                             <label for="address" class="font-medium">Manzil</label>
                                             <input name="address" id="address" type="text" class="form-input mt-2" placeholder="Manzil:">
                                         </div>
+
+                                        <span>Branch</span>
+                                        <div class="md:col-span-4 col-span-12">
+                                        <select class="form-input ps-11 " name="branch">
+                                            <option class="form-input mt-2" value="1">Chilonzor</option>
+                                            <option class="form-input mt-2" value="2">Chimboy</option>
+                                            <option class="form-input mt-2" value="3">Xadra</option>
+                                            <option class="form-input mt-2" value="4">Farg'ona</option>
+                                            <option class="form-input mt-2" value="5">Xorazm</option>
+                                        </select>
+                                        </div>
                                         <div class="col-span-12">
                                             <label for="price" class="font-medium">Narxi:</label>
                                             <div class="form-icon relative mt-2">
