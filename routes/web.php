@@ -17,6 +17,10 @@ Router::get('/status/create', fn()=> loadView('admin/createStatus'));
 
 Router::get('/Branch/create', fn()=> loadView('admin/createBranch'));
 
+Router::get('/register', fn()=> loadView('register'));
+Router::get('/login', fn()=> loadView('login'));
+
+
 
 
 Router::post('/ads/create', fn()=> loadController('createAd'));

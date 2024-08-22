@@ -92,7 +92,7 @@ loadPartials('navbar');
 
                                 <li class="flex justify-between items-center mt-2">
                                     <span class="text-slate-400 text-sm">Filial:</span>
-                                    <span class="font-medium text-sm"><?= $ad->branch_id;?></span>
+                                    <span class="font-medium text-sm"><?= $ad->branch_address;?></span>
                                 </li>
 
                                 <li class="flex justify-between items-center mt-2">

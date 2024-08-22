@@ -52,6 +52,7 @@ class Ads
             JOIN ads_image ON ads.id = ads_image.ads_id
             JOIN status ON ads.status_id = status.id
             JOIN branch ON ads.branch_id = branch.id
+            
             WHERE ads.id = :id";
 
         $stmt = $this->pdo->prepare($query);
