@@ -1,173 +1,101 @@
-
 <!doctype html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./styles/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('your-image-url-here.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Optional: Add a dark overlay to make the form stand out more */
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  </style>
 </head>
-<body>
-  <body class="flex font-poppins items-center justify-center">
-    <div class="h-screen w-screen flex justify-center items-center dark:bg-gray-900">
-    <div class="grid gap-8">
-      <div
-        id="back-div"
-        class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px] m-4"
-      >
-        <div
-          class="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg xl:p-10 2xl:p-10 lg:p-10 md:p-10 sm:p-2 m-2"
-        >
-          <h1 class="pt-8 pb-6 font-bold dark:text-gray-400 text-5xl text-center cursor-default">
-            register
-          </h1>
-          <form action="#" method="post" class="space-y-4">
-            <div>
-              <label for="email" class="mb-2  dark:text-gray-400 text-lg">Email</label>
-              <input
-                id="email"
-                class="border p-3 dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-                type="email"
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div>
-              <label for="password" class="mb-2 dark:text-gray-400 text-lg">Password</label>
-              <input
-                id="password"
-                class="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-                type="password"
-                placeholder="Password"
-                required
-              />
-            </div>
 
-            <button
-              class="bg-gradient-to-r dark:text-gray-300 from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
-              type="submit"
-            >
-              register
-            </button>
-          </form>
-          <div class="flex flex-col mt-4 items-center justify-center text-sm">
-            <h3 class="dark:text-gray-300">
-              Don't have an account?
-              <a
-                class="group text-blue-400 transition-all duration-100 ease-in-out"
-                href="/login"
-              >
-                <span
-                  class="bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                >
-                  Log in
-                </span> 
-              </a>
-            </h3>
-          </div>
-          <!-- Third Party Authentication Options -->
-          <div
-            id="third-party-auth"
-            class="flex items-center justify-center mt-5 flex-wrap"
-          >
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px]"
-                src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
-                alt="Google"
-              />
-            </button>
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px]"
-                src="https://ucarecdn.com/95eebb9c-85cf-4d12-942f-3c40d7044dc6/"
-                alt="Linkedin"
-              />
-            </button>
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px] filter dark:invert"
-                src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"
-                alt="Github"
-              />
-            </button>
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px]"
-                src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/"
-                alt="Facebook"
-              />
-            </button>
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px] dark:gray-100"
-                src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
-                alt="twitter"
-              />
-            </button>
+<body class="flex font-sans items-center justify-center h-screen relative">
 
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px]"
-                src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/"
-                alt="apple"
-              />
-            </button>
-          </div>
+  <!-- Optional: Overlay -->
+  <div class="overlay"></div>
 
-          <div
-            class="text-gray-500 flex text-center flex-col mt-4 items-center text-sm"
-          >
-            <p class="cursor-default">
-              By signing in, you agree to our
-              <a
-                class="group text-blue-400 transition-all duration-100 ease-in-out"
-                href="#"
-              >
-                <span
-                  class="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                >
-                  Terms
-                </span>
-              </a>
-              and
-              <a
-                class="group text-blue-400 transition-all duration-100 ease-in-out"
-                href="#"
-              >
-                <span
-                  class="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                >
-                  Privacy Policy
-                </span>
-              </a>
-            </p>
-          </div>
-        </div>
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-md w-full relative z-10">
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-300 text-center mb-6">Register</h1>
+    <form action="/ads/create" method="post" class="space-y-4">
+
+      <!-- Username Field -->
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Username</label>
+        <input id="username" name="username"
+          class="mt-1 block w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          type="text" placeholder="Username" required />
       </div>
+
+      <!-- Position Field -->
+      <div>
+        <label for="position" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Position</label>
+        <input id="position" name="position"
+          class="mt-1 block w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          type="text" placeholder="Position" required />
       </div>
+
+      <!-- Gender Field -->
+      <div>
+        <label for="gender" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Gender</label>
+        <select id="gender" name="gender"
+          class="mt-1 block w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <!-- Phone Field -->
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+        <input id="phone" name="phone"
+          class="mt-1 block w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          type="tel" placeholder="Phone" required />
+      </div>
+
+      <!-- Email Field -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+        <input id="email" name="email"
+          class="mt-1 block w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          type="email" placeholder="Email" required />
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+        <input id="password" name="password"
+          class="mt-1 block w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          type="password" placeholder="Password" required />
+      </div>
+
+      <!-- Register Button -->
+      <button type="submit"
+        class="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Register
+      </button>
+    </form>
+
+    <div class="text-center mt-4 text-sm text-gray-600 dark:text-gray-400">
+      <p>Already have an account? <a href="/login" class="text-blue-500 hover:text-blue-600">Log in</a></p>
     </div>
-  </body>
-</html>
-
-
+  </div>
 </body>
+
 </html>
-  

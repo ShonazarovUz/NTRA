@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-$title       = $_POST['title'];
+$title = $_POST['title'];
 $description = $_POST['description'];
-$price       = (float) $_POST['price'];
-$branch      = (int) $_POST['branch'];
-$address     = $_POST['address'];
-$rooms       = (int) $_POST['rooms'];
+$price = (float) $_POST['price'];
+$branch = (int) $_POST['branch'];
+$address = $_POST['address'];
+$rooms = (int) $_POST['rooms'];
 
-if ($_POST['title']
+if (
+    $_POST['title']
     && $_POST['description']
     && $_POST['price']
     && $_POST['address']
@@ -35,13 +36,13 @@ if ($_POST['title']
 
     if ($newAdsId) {
         $imageHandler = new \App\Image();
-        $fileName     = $imageHandler->handleUpload();
+        $fileName = $imageHandler->handleUpload();
 
         if (!$fileName) {
             exit('Rasm yuklanmadi!');
         }
 
-        $imageHandler->addImage((int)$newAdsId, $fileName);
+        $imageHandler->addImage((int) $newAdsId, $fileName);
 
         header('Location: /');
 

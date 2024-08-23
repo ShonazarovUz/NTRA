@@ -11,15 +11,17 @@ class User
         $this -> pdo = DB::connect();
     }
 
-    public  function  createUser($username, $position, $gender, $phone)
+    public  function  createUser($username, $position, $gender, $phone, $email, $password): void
     {
 
-        $sql = "INSERT INTO users (username, position, gender, phone, created_at) VALUES (:username, :position, :gender, :phone, NOW())";
+        $sql = "INSERT INTO users (username, position, gender, phone, email, password created_at) VALUES (:username, :position, :gender, :phone, :email, :password, NOW())";
         $stmt = $this -> pdo -> prepare($sql);
         $stmt -> bindParam(':username', $username, PDO::PARAM_STR);
         $stmt -> bindParam(':position', $position, PDO::PARAM_STR);
         $stmt -> bindParam(':gender', $gender, PDO::PARAM_STR);
         $stmt -> bindParam(':phone', $phone, PDO::PARAM_STR);
+        $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
         $stmt -> execute();
 
 

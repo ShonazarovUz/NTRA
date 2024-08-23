@@ -28,6 +28,7 @@ Router::post('/ads/create', fn()=> loadController('createAd'));
 Router::post('/status/create', fn()=> loadController('create-status'));
 
 Router::post('/Branch/create', fn()=> loadController('create-branch'));
+Router::get('/register', fn()=> loadController('registerAd'));
 
 
 Router::errorResponse(404, 'Not Found');
