@@ -33,7 +33,7 @@
 
   <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-md w-full relative z-10">
     <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-300 text-center mb-6">Register</h1>
-    <form action="/ads/create" method="post" class="space-y-4">
+    <form action="/register" method="post" class="space-y-4">
 
       <!-- Username Field -->
       <div>

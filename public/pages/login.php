@@ -1,182 +1,91 @@
+<?php
+loadPartials('header')
+?>
 
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./styles/main.css" rel="stylesheet">
-</head>
-<body>
-  <body class="flex font-poppins items-center justify-center">
-    <div class="h-screen w-screen flex justify-center items-center dark:bg-gray-900">
-    <div class="grid gap-8">
-      <div
-        id="back-div"
-        class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px] m-4"
-      >
-        <div
-          class="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg xl:p-10 2xl:p-10 lg:p-10 md:p-10 sm:p-2 m-2"
-        >
-          <h1 class="pt-8 pb-6 font-bold dark:text-gray-400 text-5xl text-center cursor-default">
-            Log in
-          </h1>
-          <form action="#" method="post" class="space-y-4">
-            <div>
-              <label for="email" class="mb-2  dark:text-gray-400 text-lg">Email</label>
-              <input
-                id="email"
-                class="border p-3 dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-                type="email"
-                placeholder="Email"
-                required
-              />
+
+<body class="dark:bg-slate-900">
+        <!-- Loader Start -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
             </div>
-            <div>
-              <label for="password" class="mb-2 dark:text-gray-400 text-lg">Password</label>
-              <input
-                id="password"
-                class="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300  dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-                type="password"
-                placeholder="Password"
-                required
-              />
+        </div> -->
+        <!-- Loader End -->
+        <section class="md:h-screen py-36 flex items-center relative overflow-hidden zoom-image">
+            <div class="absolute inset-0 image-wrap z-1 bg-[url('../../assets/images/bg/01.jpg')] bg-no-repeat bg-center bg-cover"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-2" id="particles-snow"></div>
+            <div class="container relative z-3">
+                <div class="flex justify-center">
+                    <div class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
+                        <a href="index.html"><img src="assets/images/logo-icon-64.png" class="mx-auto" alt=""></a>
+                        <h5 class="my-6 text-xl font-semibold">Login</h5>
+                        <form   action="/login" method = "POST" class="text-start">
+                            <div class="grid grid-cols-1">
+                                <div class="mb-4">
+                                    <label class="font-medium" for="LoginEmail">Email Address:</label>
+                                    <input id="LoginEmail" type="email" name="email" class="form-input mt-3" placeholder="name@example.com">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="font-medium" for="LoginPassword">Password:</label>
+                                    <input id="LoginPassword" type="password" name="password" class="form-input mt-3" placeholder="Password:">
+                                </div>
+
+                                <div class="flex justify-between mb-4">
+                                    <div class="flex items-center mb-0">
+                                        <input class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-green-600 focus:border-green-300 focus:ring focus:ring-offset-0 focus:ring-green-200 focus:ring-opacity-50 me-2" type="checkbox" value="" id="RememberMe">
+                                        <label class="form-checkbox-label text-slate-400" for="RememberMe">Remember me</label>
+                                    </div>
+                                    <p class="text-slate-400 mb-0"><a href="auth-re-password.html" class="text-slate-400">Forgot password ?</a></p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <button class="btn bg-green-600 hover:bg-green-700 text-white rounded-md w-full">Login / Sign in</button>
+                                </div>
+
+                                <div class="text-center">
+                                    <span class="text-slate-400 me-2">Don't have an account ?</span> <a href="auth-signup.html" class="text-black dark:text-white font-bold">Sign Up</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <a
-              class="group text-blue-400 transition-all duration-100 ease-in-out"
-              href="#"
-            >
-              <span
-                class="bg-left-bottom bg-gradient-to-r text-sm from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-              >
-                Forget your password?
-              </span>
-            </a>
-            <button
-              class="bg-gradient-to-r dark:text-gray-300 from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
-              type="submit"
-            >
-              LOG IN
-            </button>
-          </form>
-          <div class="flex flex-col mt-4 items-center justify-center text-sm">
-            <h3 class="dark:text-gray-300">
-              Don't have an account?
-              <a
-                class="group text-blue-400 transition-all duration-100 ease-in-out"
-                href="/register"
-              >
-                <span
-                  class="bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                >
-                  Sign Up
-                </span>
-              </a>
-            </h3>
-          </div>
-          <!-- Third Party Authentication Options -->
-          <div
-            id="third-party-auth"
-            class="flex items-center justify-center mt-5 flex-wrap"
-          >
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px]"
-                src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
-                alt="Google"
-              />
-            </button>
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px]"
-                src="https://ucarecdn.com/95eebb9c-85cf-4d12-942f-3c40d7044dc6/"
-                alt="Linkedin"
-              />
-            </button>
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px] filter dark:invert"
-                src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"
-                alt="Github"
-              />
-            </button>
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px]"
-                src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/"
-                alt="Facebook"
-              />
-            </button>
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px] dark:gray-100"
-                src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
-                alt="twitter"
-              />
-            </button>
+        </section><!--end section -->
 
-            <button
-              href="#"
-              class="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                class="max-w-[25px]"
-                src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/"
-                alt="apple"
-              />
-            </button>
-          </div>
-
-          <div
-            class="text-gray-500 flex text-center flex-col mt-4 items-center text-sm"
-          >
-            <p class="cursor-default">
-              By signing in, you agree to our
-              <a
-                class="group text-blue-400 transition-all duration-100 ease-in-out"
-                href="#"
-              >
-                <span
-                  class="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                >
-                  Terms
-                </span>
-              </a>
-              and
-              <a
-                class="group text-blue-400 transition-all duration-100 ease-in-out"
-                href="#"
-              >
-                <span
-                  class="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out"
-                >
-                  Privacy Policy
-                </span>
-              </a>
-            </p>
-          </div>
+        <div class="fixed bottom-3 end-3 z-10">
+            <a href="" class="back-button btn btn-icon bg-green-600 hover:bg-green-700 text-white rounded-full"><i data-feather="arrow-left" class="size-4"></i></a>
         </div>
-      </div>
-      </div>
-    </div>
-  </body>
-</html>
+        
+        <!-- Switcher -->
+        <div class="fixed top-1/4 -left-2 z-3">
+            <span class="relative inline-block rotate-90">
+                <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
+                <label class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-700 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
+                    <i class="uil uil-moon text-[20px] text-yellow-500 mt-1"></i>
+                    <i class="uil uil-sun text-[20px] text-yellow-500 <mt-1"></i>
+                    <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] start-[2px] size-7"></span>
+                </label>
+            </span>
+        </div>
+        <!-- Switcher -->
 
+        <!-- LTR & RTL Mode Code -->
+        <div class="fixed top-[40%] -left-3 z-50">
+            <a href="" id="switchRtl">
+                <span class="py-1 px-3 relative inline-block rounded-b-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold rtl:block ltr:hidden" >LTR</span>
+                <span class="py-1 px-3 relative inline-block rounded-b-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold ltr:block rtl:hidden">RTL</span>
+            </a>
+        </div>
+        <!-- LTR & RTL Mode Code -->
 
-</body>
-</html>
-  
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/particles.js/particles.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/js/plugins.init.js"></script>
+        <script src="assets/js/app.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>

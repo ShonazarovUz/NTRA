@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Router;
-
+// use Controller\LoginAd;
 Router::get('/', fn()=> loadController('home'));
 Router::get('/branches', fn()=> loadController('branch'));
 
@@ -23,12 +23,12 @@ Router::get('/login', fn()=> loadView('login'));
 
 
 
+
 Router::post('/ads/create', fn()=> loadController('createAd'));
 
 Router::post('/status/create', fn()=> loadController('create-status'));
 
 Router::post('/Branch/create', fn()=> loadController('create-branch'));
-Router::get('/register', fn()=> loadController('registerAd'));
-
-
+Router::post('/register', fn()=> loadController('registerAd'));
+Router::post('/login', fn() => (new \Controller\LoginAd())->login());
 Router::errorResponse(404, 'Not Found');

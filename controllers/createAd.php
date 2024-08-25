@@ -8,7 +8,7 @@ $price = (float) $_POST['price'];
 $branch = (int) $_POST['branch'];
 $address = $_POST['address'];
 $rooms = (int) $_POST['rooms'];
-
+dd($_POST);
 if (
     $_POST['title']
     && $_POST['description']
