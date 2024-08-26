@@ -1,5 +1,6 @@
-<?php 
-declare(strict_types= 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Controller;
 
@@ -7,15 +8,13 @@ use App\User;
 
 class LoginAd
 {
+
     public function login()
     {
-        $email = $_POST['username'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
 
-        dd([ $email, $password]);
-
-        $num = (new User())->loginn($email, $password);
-        dd($num);
-        
+        (new User())->loginn($email, $password);
     }
+
 }

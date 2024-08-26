@@ -56,7 +56,6 @@ class User
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        dd($user);
         if ($user) {
             $_SESSION['user'] = [
                 'email' => $user['email'],
