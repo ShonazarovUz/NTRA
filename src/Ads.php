@@ -26,7 +26,7 @@ class Ads
         int    $rooms,
     ): false|string {
         $query = "INSERT INTO ads (title, description, user_id, status_id, branch_id, address, price, rooms, created_at) 
-                    VALUES (:title, :description, :user_id, :status_id, :branch_id, :address, :price, :rooms, NOW())";
+                  VALUES (:title, :description, :user_id, :status_id, :branch_id, :address, :price, :rooms, NOW())";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':title', $title);
@@ -44,28 +44,34 @@ class Ads
 
     public function getAd($id)
     {
-        $query = "SELECT ads.*, 
-                    ads_image.name AS image, 
-                    status.name AS status_name, 
-                    branch.address AS branch_address
-            FROM ads
-            JOIN ads_image ON ads.id = ads_image.ads_id
-            JOIN status ON ads.status_id = status.id
-            JOIN branch ON ads.branch_id = branch.id
-            
-            WHERE ads.id = :id";
+        $query = "SELECT ads.*, name AS image
+                  FROM ads
+                    JOIN ads_image ON ads.id = ads_image.ads_id
+                  WHERE ads.id = :id";
 
-        $stmt = $this->pdo->prepare($query);
+        $stmt  = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
         return $stmt->fetch();
     }
 
-
     public function getAds(): false|array
     {
-        $query = "SELECT *, ads.id AS id, ads.address AS address FROM ads JOIN branch ON branch.id = ads.branch_id";
+        $query = "SELECT *, ads.id AS id, ads.address AS address, ads_image.name AS image
+                  FROM ads
+                    JOIN branch ON branch.id = ads.branch_id
+                    LEFT JOIN ads_image ON ads.id = ads_image.ads_id";
+         return $this->pdo->query($query)->fetchAll();
+    }
+
+    public function getUsersAds(int $userId): false|array
+    {
+        $query = "SELECT *, ads.id AS id, ads.address AS address, ads_image.name AS image
+                  FROM ads
+                    JOIN branch ON branch.id = ads.branch_id
+                    LEFT JOIN ads_image ON ads.id = ads_image.ads_id
+                  WHERE user_id = $userId"; // FIXME: Prepare userId
         return $this->pdo->query($query)->fetchAll();
     }
 
@@ -81,8 +87,8 @@ class Ads
         int    $rooms
     ) {
         $query = "UPDATE ads SET title = :title, description = :description, user_id = :user_id,
-                status_id = :status_id, branch_id = :branch_id, address = :address, 
-                price = :price, rooms = :rooms, updated_at = NOW() WHERE id = :id";
+                 status_id = :status_id, branch_id = :branch_id, address = :address, 
+                 price = :price, rooms = :rooms, updated_at = NOW() WHERE id = :id";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id);

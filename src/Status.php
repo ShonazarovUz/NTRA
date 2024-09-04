@@ -1,38 +1,47 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
-use AllowDynamicProperties;
-use PDO;
-#[AllowDynamicProperties] class Status
+class Status
 {
-    public  function  __construct()
+
+    private \PDO $pdo;
+
+    public function __construct()
     {
-        $this -> pdo = DB::connect();
-    }
-    public function createStatus($name)
-    {
-        $sql = "INSERT INTO status (name) VALUES (:name)";
-        $stmt = $this -> pdo -> prepare($sql);
-        $stmt -> bindParam(':name', $name);
-        return $stmt -> execute();
-        // return $this->pdo->lastInsertId();
+        $this->pdo = DB::connect();
     }
 
-    public function updateStatus($id, $name)
+    public function createStatus(string $name): false|string
     {
-        $sql = "UPDATE status SET name = :name, updated_at = NOW() WHERE id = :id";
-        $stmt = $this -> pdo -> prepare($sql);
-        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt -> bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt -> execute();
+        $stmt = $this->pdo->prepare("INSERT INTO `status` (`name`) VALUES (:name)");
+        $stmt->bindParam(':name', $name);
+        $stmt->execute();
+
+        return $this->pdo->lastInsertId();
     }
 
-    public function deleteStatus($id)
+    public function updateStatus(int $id, string $name): bool
     {
-        $sql = "DELETE FROM status WHERE id = :id";
-        $stmt = $this -> pdo -> prepare($sql);
-        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt -> execute();
+        $stmt = $this->pdo->prepare("UPDATE status SET name = :name WHERE id = :id");
+        $stmt->bindParam(':name', $name);
+        return $stmt->execute();
+    }
+
+    public function getStatus(int $id)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM `status` WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function deleteStatus(int $id): bool
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM `status` WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
     }
 }

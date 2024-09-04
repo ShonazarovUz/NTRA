@@ -28,31 +28,33 @@ class Image
 
     public function handleUpload(): string
     {
+        // Check if file uploaded
         if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-            exit('Error: '.$_FILES['image']['error']);
+            return 'default.jpg';
         }
 
+
+        // Extract file name and path
         $name       = $_FILES['image']['name'];
         $path       = $_FILES['image']['tmp_name'];
         $uploadPath = basePath("/public/assets/images/ads");
 
+        // Check if upload directory exists
         if (!is_dir($uploadPath)) {
             mkdir($uploadPath);
         }
 
+        // Rename filename
         $fileName     = uniqid().'___'.$name;
         $fullFilePath = "$uploadPath/$fileName";
 
+        // Upload file
         $fileUploaded = move_uploaded_file($path, $fullFilePath);
 
         if (!$fileUploaded) {
             exit('Fayl yuklanmadi');
         }
 
-
         return $fileName;
     }
 }
-
-
-
