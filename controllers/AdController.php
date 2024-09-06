@@ -2,16 +2,31 @@
 
 declare(strict_types=1);
 
-namespace Controller;
+namespace Controllers;
+
+use App\Ads;
 
 class AdController
 {
+    public Ads $ads;
+
+    public function __construct()
+    {
+        $this->ads = new Ads();
+    }
+
+    public function index(): void
+    {
+        $ads = $this->ads->getAds();
+        loadView('dashboard/ads', ['ads' => $ads]);
+    }
+
     public function show(int $id): void
     {
         /**
          * @var $id
          */
-        $ad        = (new \App\Ads())->getAd($id);
+        $ad        = $this->ads->getAd($id);
         $ad->image = "../assets/images/ads/$ad->image";
 
         loadView('single-ad', ['ad' => $ad]);
@@ -32,7 +47,7 @@ class AdController
             && $_POST['rooms']
         ) {
             // TODO: Replace hardcoded values
-            $newAdsId = (new \App\Ads())->createAds(
+            $newAdsId = $this->ads->createAds(
                 $title,
                 $description,
                 5,
@@ -64,7 +79,13 @@ class AdController
         echo "Iltimos, barcha maydonlarni to'ldiring!";
     }
 
-    public function update(int $id): void{
-        loadView('dashboard/create-ad', ['ad' => (new \App\Ads())->getAd($id)]);
+    public function update(int $id): void
+    {
+        loadView('dashboard/create-ad', ['ad' => $this->ads->getAd($id)]);
+    }
+
+    public function delete(int $id): void
+    {
+        $this->ads->deleteAds($id);
     }
 }

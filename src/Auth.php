@@ -26,6 +26,19 @@ class Auth
                       JOIN user_roles ON users.id = user_roles.user_id
                   WHERE id = $user->id";
 
+
+        // |public
+        // |- dashboard/profile
+        // |--- assets
+        // |--- pages
+        // |--- partials
+        // |- public
+        // |--- assets
+        // |--- pages
+        // |--- partials
+
+
+        // Execute query
         $userWithRoles = $this->pdo->query($query)->fetch();
         if ($userWithRoles->role_id === Role::ADMIN) {
             redirect('/admin');
