@@ -2,7 +2,7 @@
 <html lang="en" class="dark scroll-smooth" dir="ltr">
 <head>
     <meta charset="UTF-8" />
-    <title>NTRA - Super-puper rent app!</title>
+    <title>Hously - Tailwind CSS Real Estate Landing & Admin Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta content="Real Estate Website Landing Page" name="description" />
     <meta content="Real Estate, buy, sell, Rent, tailwind Css" name="keywords" />
@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
 
     <!-- Css -->
     <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
@@ -28,3 +28,5 @@
 </head>
 
 <body class="dark:bg-slate-900">
+
+

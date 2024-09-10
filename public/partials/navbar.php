@@ -27,16 +27,18 @@
         <!--Login button Start-->
         <ul class="buy-button list-none mb-0">
             <li class="inline mb-0">
-                <?php
-                $url = (new \App\Session())->getName() ? '/admin' : '/login'; ?>
-                <a href="<?= $url ?>"
-                   class="btn btn-icon bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i
-                            data-feather="user" class="size-4 stroke-[3]"></i></a>
+                <?php echo getUserEmailSession(); ?>
+                <a href="/logout" class="text-danger d-flex align-items-center text-decoration-none">
+                    <i class="bi bi-box-arrow-right me-2"></i> Log out
             </li>
+            <a href="/login"
+               class="btn btn-icon bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i
+                        data-feather="user" class="size-4 stroke-[3]"></i>
+            </a>
             <li class="sm:inline ps-1 mb-0 hidden">
-                <a href="/register"
-                   class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
+                <a href="/register" class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
             </li>
+
         </ul>
         <!--Login button End-->
 

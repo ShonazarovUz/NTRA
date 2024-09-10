@@ -1,73 +1,95 @@
 <?php
 
-declare(strict_types=1);
 
-use App\Ads;
+use JetBrains\PhpStorm\NoReturn;
 
 function dd($args)
 {
-    echo "<pre>";
-    print_r($args);
-    echo "</pre>";
+    echo '<pre>';
+    var_dump($args);
+    echo '</pre>';
     die();
+
 }
 
-function getAds(): false|array
-{
-    return (new Ads())->getAds();
-}
 
-function basePath(string $path): string
+
+function  basePath($path)
 {
     return __DIR__.$path;
 }
-
-function loadView(string $path, array|null $args = null, bool $loadFromPublic = true): void
+function  LoadView($path, array | null $args = null): void
 {
-    if ($loadFromPublic) {
-        $file = "/public/pages/$path.php";
-    } else {
-        $file = "/resources/views/pages/$path.php";
-    }
+    $file = "/resources/views/pages/$path.php";
 
     $filePath = basePath($file);
 
     if (!file_exists($filePath)) {
-        echo "Required view not found: $filePath";
+        echo "fayl topilmadi $filePath";
         return;
     }
-
     if (is_array($args)) {
+
         extract($args);
     }
-    require $filePath;
+    require_once  $filePath;
 }
-
-function loadPartials(string $path, array|null $args = null, bool $loadFromPublic = true): void
+function  LoadPartials($path, array | null $args = null, bool $LoadFromPublic = true )
 {
     if (is_array($args)) {
+
         extract($args);
     }
 
-    if ($loadFromPublic) {
+    if ( $LoadFromPublic ) {
         $file = "/public/partials/$path.php";
-    } else {
+    }else{
         $file = "/resources/views/partials/$path.php";
+
     }
 
-    require basePath($file);
+    require_once  basePath($file );
 }
-
-function loadController(string $path, array|null $args = null): void
+function  LoadController($path, array | null $args = null)
 {
     if (is_array($args)) {
+
         extract($args);
     }
-    require basePath('/controllers/'.$path.'.php');
+    require_once  basePath("/controller/" . $path . ".php");
 }
 
-function redirect(string $url): void
+function  assets( string $path )
+{
+    $filePath = basePath("/resources/assets/$path");
+
+    if (!file_exists($filePath)) {
+        echo "fayl  assets topilmadi $filePath";
+        return '';
+    }
+    return $filePath;
+
+
+
+}
+
+
+
+function  getUserEmailSession()
+{
+    if ( isset($_SESSION['LOGIN_REGISTER'])) {
+
+        return $_SESSION['LOGIN_REGISTER'];
+    }
+    return null;
+
+}
+
+
+#[NoReturn] function  redirect(string $url):void
 {
     header("Location: $url");
     exit();
 }
+
+

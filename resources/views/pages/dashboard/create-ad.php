@@ -1,41 +1,28 @@
 <?php
 
 declare(strict_types=1);
-loadPartials(path: 'header', loadFromPublic: false);
-?>
-    <body class="font-body text-base text-black dark:text-white dark:bg-slate-900">
+loadPartials('header');
+LoadPartials("navbar");
 
+/**
+ * @var  $ads
+ * @var  $brenches
+ * @var $status
+ */
+
+$uri = explode('/', $_SERVER['REQUEST_URI']);
+if (in_array('create', $uri)) {
+    $action = '/create/ads';
+    $ads = null;
+} else {
+    $action = "/ads/update/$ads->id";
+}
+//dd($brenches);
+
+
+?>
 
 <div class="page-wrapper toggled">
-    <!-- sidebar-wrapper -->
-    <nav id="sidebar" class="sidebar-wrapper sidebar-dark">
-        <div class="sidebar-content">
-            <div class="sidebar-brand">
-                <a href="index.html"><img src="/dashboard/assets/images/logo-light.png" alt=""></a>
-            </div>
-
-            <ul class="sidebar-menu border-t border-white/10" data-simplebar style="height: calc(100% - 70px);">
-                <li>
-                    <a href="/admin"><i class="mdi mdi-chart-bell-curve-cumulative me-2"></i>Dashboard</a>
-                </li>
-
-                <li>
-                    <a href="/admin/ads"><i class="mdi mdi-home-city me-2"></i>E'lonlar</a>
-                </li>
-
-                <li>
-                    <a href="/admin/branches"><i class="mdi mdi-home-heart me-2"></i>Filiallar</a>
-                </li>
-
-                <li>
-                    <a href="/admin/users"><i class="mdi mdi-home-plus me-2"></i>Foydalanuvchilar</a>
-                </li>
-            </ul>
-            <!-- sidebar-menu  -->
-        </div>
-    </nav>
-    <!-- sidebar-wrapper  -->
-
     <!-- Start Page Content -->
     <main class="page-content bg-gray-50 dark:bg-slate-800">
         <!-- Top Header -->
@@ -44,12 +31,10 @@ loadPartials(path: 'header', loadFromPublic: false);
                 <div class="flex items-center space-x-1">
                     <!-- Logo -->
                     <a href="#" class="xl:hidden block me-2">
-                        <img src="/dashboard/assets/images/logo-icon-32.png" class="md:hidden block" alt="">
+                        <img src="assets/images/logo-icon-32.png" class="md:hidden block" alt="">
                         <span class="md:block hidden">
-                                    <img src="/dashboard/assets/images/logo-dark.png" class="inline-block dark:hidden"
-                                         alt="">
-                                    <img src="/dashboard/assets/images/logo-light.png" class="hidden dark:inline-block"
-                                         alt="">
+                                    <img src="assets/images/logo-dark.png" class="inline-block dark:hidden" alt="">
+                                    <img src="assets/images/logo-light.png" class="hidden dark:inline-block" alt="">
                                 </span>
                     </a>
                     <!-- Logo -->
@@ -80,7 +65,7 @@ loadPartials(path: 'header', loadFromPublic: false);
                         <button data-dropdown-toggle="dropdown"
                                 class="dropdown-toggle size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[20px] text-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-100 dark:border-gray-800 text-slate-900 dark:text-white rounded-md"
                                 type="button">
-                            <img src="/dashboard/assets/images/flags/usa.png" class="size-6 rounded-md" alt="">
+                            <img src="assets/images/flags/usa.png" class="size-6 rounded-md" alt="">
                         </button>
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-36 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 hidden"
@@ -89,28 +74,28 @@ loadPartials(path: 'header', loadFromPublic: false);
                                 <li class="my-1">
                                     <a href=""
                                        class="flex items-center text-[15px] font-medium py-1.5 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><img
-                                                src="/dashboard/assets/images/flags/germany.png"
+                                                src="assets/images/flags/germany.png"
                                                 class="size-6 rounded-md me-2 shadow dark:shadow-gray-700" alt="">
                                         German</a>
                                 </li>
                                 <li class="my-1">
                                     <a href=""
                                        class="flex items-center text-[15px] font-medium py-1.5 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><img
-                                                src="/dashboard/assets/images/flags/italy.png"
+                                                src="assets/images/flags/italy.png"
                                                 class="size-6 rounded-md me-2 shadow dark:shadow-gray-700" alt="">
                                         Italian</a>
                                 </li>
                                 <li class="my-1">
                                     <a href=""
                                        class="flex items-center text-[15px] font-medium py-1.5 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><img
-                                                src="/dashboard/assets/images/flags/russia.png"
+                                                src="assets/images/flags/russia.png"
                                                 class="size-6 rounded-md me-2 shadow dark:shadow-gray-700" alt="">
                                         Russian</a>
                                 </li>
                                 <li class="my-1">
                                     <a href=""
                                        class="flex items-center text-[15px] font-medium py-1.5 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><img
-                                                src="/dashboard/assets/images/flags/spain.png"
+                                                src="assets/images/flags/spain.png"
                                                 class="size-6 rounded-md me-2 shadow dark:shadow-gray-700" alt="">
                                         Spanish</a>
                                 </li>
@@ -152,10 +137,11 @@ loadPartials(path: 'header', loadFromPublic: false);
                                 <li>
                                     <a href="#!" class="block font-medium py-1.5 px-4">
                                         <div class="flex items-center">
-                                            <img src="/dashboard/assets/images/client/04.jpg"
+                                            <img src="assets/images/client/04.jpg"
                                                  class="size-10 rounded-md shadow dark:shadow-gray-700" alt="">
                                             <div class="ms-2">
-                                                <span class="text-[15px] font-medium block"><span class="font-semibold">Message</span> from Luis</span>
+                                                    <span class="text-[15px] font-medium block"><span
+                                                                class="font-semibold">Message</span> from Luis</span>
                                                 <small class="text-slate-400">1 hour ago</small>
                                             </div>
                                         </div>
@@ -168,7 +154,8 @@ loadPartials(path: 'header', loadFromPublic: false);
                                                 <i data-feather="dollar-sign" class="size-4"></i>
                                             </div>
                                             <div class="ms-2">
-                                                <span class="text-[15px] font-medium block"><span class="font-semibold">One Refund Request</span></span>
+                                                    <span class="text-[15px] font-medium block"><span
+                                                                class="font-semibold">One Refund Request</span></span>
                                                 <small class="text-slate-400">2 hour ago</small>
                                             </div>
                                         </div>
@@ -190,10 +177,11 @@ loadPartials(path: 'header', loadFromPublic: false);
                                 <li>
                                     <a href="#!" class="block font-medium py-1.5 px-4">
                                         <div class="flex items-center">
-                                            <img src="/dashboard/assets/images/client/05.jpg"
+                                            <img src="assets/images/client/05.jpg"
                                                  class="size-10 rounded-md shadow dark:shadow-gray-700" alt="">
                                             <div class="ms-2">
-                                                <span class="text-[15px] font-medium block"><span class="font-semibold">Cally</span> started following you</span>
+                                                    <span class="text-[15px] font-medium block"><span
+                                                                class="font-semibold">Cally</span> started following you</span>
                                                 <small class="text-slate-400">2 days ago</small>
                                             </div>
                                         </div>
@@ -207,8 +195,8 @@ loadPartials(path: 'header', loadFromPublic: false);
                     <!-- User/Profile Dropdown -->
                     <li class="dropdown inline-block relative">
                         <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">
-                            <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[20px] text-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-100 dark:border-gray-800 text-slate-900 dark:text-white rounded-md"><img
-                                        src="/dashboard/assets/images/client/07.jpg" class="rounded-md" alt=""></span>
+                                <span class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[20px] text-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-100 dark:border-gray-800 text-slate-900 dark:text-white rounded-md"><img
+                                            src="assets/images/client/07.jpg" class="rounded-md" alt=""></span>
                         </button>
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-44 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 hidden"
@@ -251,59 +239,119 @@ loadPartials(path: 'header', loadFromPublic: false);
 
         <div class="container-fluid relative px-3">
             <div class="layout-specing">
-                <!-- Start Content -->
+                Start Content
                 <div class="md:flex justify-between items-center">
-                    <h5 class="text-lg font-semibold">Filiallar</h5>
-
-                    <ul class="tracking-[0.5px] inline-block sm:mt-0 mt-3">
-                        <li class="inline-block capitalize text-[16px] font-medium duration-500 dark:text-white/70 hover:text-green-600 dark:hover:text-white">
-                            <a href="/admin">Dashboard</a></li>
-                        <li class="inline-block text-base text-slate-950 dark:text-white/70 mx-0.5 ltr:rotate-0 rtl:rotate-180">
-                            <i class="mdi mdi-chevron-right"></i></li>
-                        <li class="inline-block capitalize text-[16px] font-medium text-green-600 dark:text-white"
-                            aria-current="page">Filiallar
-                        </li>
-                    </ul>
                 </div>
 
-                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 mt-6">
-                    <?php
-                    /**
-                     * @var $branches
-                     */
-
-                    foreach ($branches as $branch):?>
-                        <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
-                            <div class="relative">
-                                <img src="<?php echo \App\Image::show($branch?->image) ?>" alt="">
-
-                                <div class="absolute top-4 end-4">
-                                    <a href="javascript:void(0)"
-                                       class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-red-600 dark:focus:text-red-600 hover:text-red-600 dark:hover:text-red-600"><i
-                                                class="mdi mdi-heart text-[20px]"></i></a>
+                <div class="container relative">
+                    <div class="grid md:grid-cols-2 grid-cols-1 gap-6 mt-6">
+                        <div class="rounded-md shadow dark:shadow-gray-700 p-6 bg-white dark:bg-slate-900 h-fit">
+                            <div>
+                                <p class="font-medium mb-4">Upload your property image here, Please click "Upload
+                                    Image" Button.</p>
+                                <div class="preview-box flex justify-center rounded-md shadow dark:shadow-gray-800 overflow-hidden bg-gray-50 dark:bg-slate-800 text-slate-400 p-2 text-center small w-auto max-h-60">
+                                    Supports JPG, PNG and MP4 videos. Max file size : 10MB.
                                 </div>
+                                <input form="ads-create" type="file" id="input-file" name="image" accept="image/*"
+                                       onchange={handleChange()} hidden>
+                                <label class="btn-upload btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md mt-6 cursor-pointer"
+                                       for="input-file">Upload Image</label>
                             </div>
+                        </div>
 
-                            <div class="p-6">
-                                <div class="pb-6">
-                                    <a href="#"
-                                       class="text-lg hover:text-green-600 font-medium ease-in-out duration-500"><?= $branch->name; ?></a>
+                        <div class="rounded-md shadow dark:shadow-gray-700 p-6 bg-white dark:bg-slate-900 h-fit">
+                            <form id="ads-create" action="<?= $action ?>" method="post" enctype="multipart/form-data">
+                                <div class="grid grid-cols-12 gap-5">
+                                    <input type="hidden" name="_method" value="patch">
+                                    <div class="col-span-12">
+                                        <label for="title" class="font-medium">Sarlavha</label>
+                                        <input name="title" id="title" type="text" class="form-input mt-2"
+                                               placeholder="Sarlavha" value="<?= $ads?->title ?>">
+                                    </div>
+
+                                    <div class="md:col-span-4 col-span-12">
+                                        <label for="description" class="font-medium">Ta'rif</label>
+                                        <div class="form-icon relative mt-2">
+                                            <i class="mdi mdi-arrow-expand-all absolute top-2 start-4 text-green-600"></i>
+                                            <textarea name="description" id="description" class="form-input ps-11"
+                                                      placeholder="E'lon bo'yicha ta'rif...">
+                                                    <?= $ads?->description ?>
+                                                </textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="md:col-span-4 col-span-12 hidden">
+                                        <div class="form-icon relative mt-2">
+                                            <input name="user" value="5" type="number" class="form-input ps-11">
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-4 col-span-12 hidden">
+                                        <div class="form-icon relative mt-2">
+                                            <input name="status" value="1" type="number" class="form-input ps-11">
+                                        </div>
+                                    </div>
+
+                                    <div class="md:col-span-4 col-span-12 hidden">
+                                        <div class="form-icon relative mt-2">
+                                            <!--                                            <input name="branch" value="1" type="number" class="form-input ps-11">-->
+                                        </div>
+                                    </div>
+                                    <div class="form-container flex mt-2">
+                                        <div class="form-group mr-4">
+                                            <label for="branch1" class="font-medium">Branch</label>
+                                            <select name="branch_id" id="branch1" class="form-input ps-11" style="width: 300px;">
+                                                <?php foreach ($brenches as $brench) : ?>
+                                                    <option value="<?= $brench->id; ?>">
+                                                        <?php echo $brench->name; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="branch2" class="font-medium">Status</label>
+                                            <select name="status_id" id="branch2" class="form-input ps-11" style="width: 150px;">
+                                                <?php foreach ($status as $statuc) : ?>
+                                                    <option value="<?= $statuc->id; ?>">
+                                                        <?php echo $statuc->name; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="md:col-span-4 col-span-12">
+                                        <label for="address" class="font-medium">Manzil</label>
+                                        <input name="address" id="address" type="text" class="form-input mt-2"
+                                               placeholder="Manzil:" value="<?= $ads?->address ?>">
+                                    </div>
+                                    <div class="inputs-container">
+                                        <div class="input-group">
+                                            <label for="price" class="font-medium">Narxi:</label>
+                                            <div class="form-icon relative mt-2">
+                                                <i class="mdi mdi-currency-usd absolute top-2 start-4 text-green-600"></i>
+                                                <input name="price" id="price" type="number" class="form-input ps-11"
+                                                       placeholder="Narxi($) :" value="<?= $ads?->price ?>">
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="rooms" class="font-medium">Xonalar:</label>
+                                            <div class="form-icon relative mt-2">
+                                                <input name="rooms" id="rooms" type="number" class="form-input ps-11"
+                                                       placeholder="Xonalar :" value="<?= $ads?->rooms ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <ul class="pt-6 flex justify-between items-center list-none">
-                                    <li>
-                                        <span class="text-slate-400">Manzil</span>
-                                        <p class="text-lg font-medium"><?= $branch->address ?></p>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div><!--end property content-->
-                    <?php
-                    endforeach; ?>
-                </div><!--en grid-->
-
-
+                                <button type="submit" id="submit"
+                                        class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md mt-5">
+                                    Saqlash
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <!-- End Content -->
             </div>
         </div><!--end container-->
@@ -315,8 +363,7 @@ loadPartials(path: 'header', loadFromPublic: false);
                     <div class="sm:text-start text-center mx-md-2">
                         <p class="mb-0 text-slate-400">©
                             <script>document.write(new Date().getFullYear())</script>
-                            NTRA. Design with <i class="mdi mdi-heart text-red-600"></i> by <a
-                                    href="https://najottalim.uz" target="_blank" class="text-reset">PHP Bootcamp N1</a>.
+                            NTRA. Design with <i class="mdi mdi-heart text-red-600"></i> by PHP N1 group.
                         </p>
                     </div><!--end col-->
                 </div><!--end grid-->
@@ -326,31 +373,8 @@ loadPartials(path: 'header', loadFromPublic: false);
     </main>
     <!--End page-content" -->
 </div>
-<!-- page-wrapper -->
-
-<!-- Switcher -->
-<div class="fixed top-[30%] -end-2 z-50">
-            <span class="relative inline-block rotate-90">
-                <input type="checkbox" class="checkbox opacity-0 absolute" id="chk"/>
-                <label class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-700 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8"
-                       for="chk">
-                    <i data-feather="moon" class="size-[18px] text-yellow-500"></i>
-                    <i data-feather="sun" class="size-[18px] text-yellow-500"></i>
-                    <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] size-7"></span>
-                </label>
-            </span>
-</div>
-<!-- Switcher -->
-
-<!-- LTR & RTL Mode Code -->
-<div class="fixed top-[40%] -end-3 z-50">
-    <a href="" id="switchRtl">
-        <span class="py-1 px-3 relative inline-block rounded-b-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-700 font-bold rtl:block ltr:hidden">LTR</span>
-        <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-700 font-bold ltr:block rtl:hidden">RTL</span>
-    </a>
-</div>
-<!-- LTR & RTL Mode Code -->
 
 <?php
-loadPartials(path: 'footer', loadFromPublic: false);
+loadPartials('footer');
 ?>
+

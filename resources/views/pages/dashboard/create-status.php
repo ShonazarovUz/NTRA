@@ -193,18 +193,15 @@ loadPartials('navbar');
                     <div class="container relative">
                         <div class="grid md:grid-cols-2 grid-cols-1 gap-6 mt-6">
                             <div class="rounded-md shadow dark:shadow-gray-700 p-6 bg-white dark:bg-slate-900 h-fit">
-                            <?php ?>
-                            </div>
-                            <div class="rounded-md shadow dark:shadow-gray-700 p-6 bg-white dark:bg-slate-900 h-fit">
-                                <form id="ads-create" action="/status/create" method="post" enctype="multipart/form-data">
+                                <form id="ads-create" action="/create/status" method="post" enctype="multipart/form-data">
                                     <div class="grid grid-cols-12 gap-5">
                                         <div class="col-span-12">
-                                            <label for="status" class="font-medium">Status</label>
-                                            <input name="status" id="status" type="text" class="form-input mt-2" placeholder="Status">
+                                            <label for="title" class="font-medium">Status</label>
+                                            <input name="status" id="title" type="text" class="form-input mt-2" placeholder="Status">
                                         </div>
                                     </div>
 
-                                    <button type="submit" id="submit" name="send" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md mt-5">Yuborish</button>
+                                    <button type="submit" id="submit" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md mt-5"> Yuborish </button>
                                 </form>
                             </div>
                         </div>
