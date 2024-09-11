@@ -1,11 +1,8 @@
 {
-    "scripts": {
-        "tailwind": "npx tailwindcss -i ./public/styles/core.css -o ./public/styles/main.css --watch"
-    },
-    "devDependencies": {
-        "tailwindcss": "^3.4.10"
-    },
-    "dependencies": {
-        "dotenv": "^16.4.5"
-    }
+  "scripts": {
+    "tailwind": "npx tailwindcss -i public/styles/core.css -o public/styles/main.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
+  }
 }

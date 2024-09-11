@@ -86,7 +86,7 @@ function  getUserEmailSession()
 }
 
 
-#[NoReturn] function  redirect(string $url):void
+function  redirect(string $url):void
 {
     header("Location: $url");
     exit();

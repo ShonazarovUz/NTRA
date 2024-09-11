@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App;
 
 use PDO;
@@ -10,61 +8,70 @@ class Image
 {
     private PDO $pdo;
 
-    const string DEFAULT_IMAGE = 'default.jpg';
-    const string DEFAULT_PATH  = '/assets/images/';
-
     public function __construct()
     {
         $this->pdo = DB::connect();
     }
 
-    public function addImage(int $adsId, string $name): bool
-    {
-        $query = "INSERT INTO ads_image (ads_id, name)
-                 VALUES (:ads_id, :name)";
 
+    public function addImage(int $ads_id, string $name)
+    {
+        $query = "INSERT INTO ads_image (ads_id, name) VALUES (:ads_id, :name)";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':ads_id', $ads_id, PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        return $stmt->execute();
+
+    }
+    public  function  getImagesByAdId(int $adsId)
+    {
+
+        $query = "SELECT * FROM ads_image WHERE ads_id = :ads_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':ads_id', $adsId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+
+    }
+    public function updateImage( $id, string $name): bool
+    {
+        $query = "UPDATE ads_image SET name = :name WHERE id = :id";
         $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':ads_id', $adsId);
+        $statement->bindParam(':id', $id);
         $statement->bindParam(':name', $name);
         return $statement->execute();
     }
 
-    public function handleUpload(): string
+
+    public function handleUpload()
     {
-        // Check if file uploaded
         if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-            return 'default.jpg';
+            if($_FILES['image']['error'] == 4)
+                return 'default2.jpg';
+            exit('Error: '. $_FILES['image']['error']);
         }
 
+        $name = $_FILES['image']['name'];
+        $path = $_FILES['image']['tmp_name'];
 
-        // Extract file name and path
-        $name       = $_FILES['image']['name'];
-        $path       = $_FILES['image']['tmp_name'];
         $uploadPath = basePath("/public/assets/images/ads");
-
-        // Check if upload directory exists
         if (!is_dir($uploadPath)) {
             mkdir($uploadPath);
         }
-
-        // Rename filename
-        $fileName     = uniqid().'___'.$name;
-        $fullFilePath = "$uploadPath/$fileName";
-
-        // Upload file
+        $filename = uniqid() . "___" . $name;
+        $fullFilePath  = "$uploadPath/$filename";
         $fileUploaded = move_uploaded_file($path, $fullFilePath);
 
         if (!$fileUploaded) {
-            exit('Fayl yuklanmadi');
+            echo "Rasm yuklashda xatolik yuz berdi";
+            exit();
         }
 
-        return $fileName;
+
+        return $filename;
     }
 
-    public static function show(string|null $file = null): string
-    {
-        return $file
-            ? self::DEFAULT_PATH.$file
-            : self::DEFAULT_PATH.self::DEFAULT_IMAGE;
-    }
+
 }

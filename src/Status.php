@@ -1,47 +1,63 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App;
-
+use PDO;
 class Status
 {
-
-    private \PDO $pdo;
+    private  PDO $pdo;
 
     public function __construct()
     {
         $this->pdo = DB::connect();
     }
 
-    public function createStatus(string $name): false|string
+    public  function create($name)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO `status` (`name`) VALUES (:name)");
-        $stmt->bindParam(':name', $name);
-        $stmt->execute();
+
+        $sql = "INSERT INTO status (name) VALUES (:name)";
+        $stmt = $this -> pdo -> prepare($sql);
+        $stmt -> bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt -> execute();
 
         return $this->pdo->lastInsertId();
+
     }
 
-    public function updateStatus(int $id, string $name): bool
+    public  function  updateStatus($id, $name)
     {
-        $stmt = $this->pdo->prepare("UPDATE status SET name = :name WHERE id = :id");
-        $stmt->bindParam(':name', $name);
-        return $stmt->execute();
+
+        $sql = "UPDATE status SET name = :name WHERE id = :id";
+        $stmt = $this -> pdo -> prepare($sql);
+        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt -> bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt -> execute();
+
+    }
+    public  function  deleteStatus($id)
+    {
+
+        $sql = "DELETE FROM status WHERE id = :id";
+        $stmt = $this -> pdo -> prepare($sql);
+        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt -> execute();
+
     }
 
-    public function getStatus(int $id)
+    public  function  getStatuses(): false|array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM `status` WHERE id = :id");
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        return $stmt->fetch();
+        $sql = "SELECT * FROM status";
+        $stmt = $this -> pdo -> query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    public  function  getStatus($id)
+    {
+
+        $sql = "SELECT * FROM status WHERE id = :id";
+        $stmt = $this -> pdo -> prepare($sql);
+        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt -> execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+
     }
 
-    public function deleteStatus(int $id): bool
-    {
-        $stmt = $this->pdo->prepare("DELETE FROM `status` WHERE id = :id");
-        $stmt->bindParam(':id', $id);
-        return $stmt->execute();
-    }
 }

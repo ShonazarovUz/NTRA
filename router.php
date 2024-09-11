@@ -1,5 +1,8 @@
 <?php
+declare( strict_types=1 );
 
-declare(strict_types=1);
+use App\Router;
 
-require 'routes/web.php';
+$router = new Router();
+
+require_once  "routes/web.php";

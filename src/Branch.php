@@ -1,54 +1,70 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App;
+
+use PDO;
 
 class Branch
 {
-    private \PDO $pdo;
+
+    private PDO $pdo;
 
     public function __construct()
     {
         $this->pdo = DB::connect();
     }
 
-    public function createBranch(string $name, string $address): bool
+    public function create($name, $address)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO branch (name, address, created_at)
-                                          VALUES (:name, :address, NOW())");
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':address', $address);
-        return $stmt->execute();
-    }
 
-    public function updateBranch(int $id, string $name, string $address): bool
-    {
-        $stmt = $this->pdo->prepare("UPDATE branch SET name = :name, address = :address WHERE id = :id");
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':address', $address);
-
-        return $stmt->execute();
-    }
-
-    public function getBranch(int $id)
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM branch WHERE id = :id");
-        $stmt->bindParam(':id', $id);
+        $sql = "INSERT INTO branch (name, address, created_at) VALUES (:name, :address, NOW())";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':address', $address, PDO::PARAM_STR);
         $stmt->execute();
-        return $stmt->fetch();
+        return $this->pdo->lastInsertId();
+
     }
 
-    public function getBranches(): false|array
+    public function updateBranch($id, $name, $address)
     {
-        return $this->pdo->query("SELECT * FROM branch")->fetchAll();
+        $sql = "UPDATE branch SET name = :name, address = :address WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':address', $address, PDO::PARAM_STR);
+        $stmt->execute();
+
     }
 
-    public function deleteBranch(int $id): bool
+    public function deleteBranch($id)
     {
-        $stmt = $this->pdo->prepare("DELETE FROM branch WHERE id = :id");
-        $stmt->bindParam(':id', $id);
-        return $stmt->execute();
+        $sql = "DELETE FROM branch WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
     }
+
+
+    public function getBranches()
+    {
+        $sql = "SELECT * FROM branch";
+        $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    public  function  getBranch($id)
+    {
+
+        $sql = "SELECT * FROM branch WHERE id = :id";
+        $stmt = $this -> pdo -> prepare($sql);
+        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt -> execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+
+    }
+
+
+
+
 }
